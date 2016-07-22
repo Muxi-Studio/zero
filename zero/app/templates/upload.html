@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>ZERO</title>
+
+  <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+  <script src="http://semantic-ui.com/javascript/card.js"></script>
+  <link rel="stylesheet" type="text/css" class="ui" href="http://semantic-ui.com/dist/semantic.min.css">
+  <link rel="stylesheet/less" type="text/css" href="http://semantic-ui.com/src/definitions/views/card.less">
+
+  <!--- Site CSS -->
+  <!--link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/site.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/grid.css"-->
+
+  <!--- Component CSS -->
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/menu.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/input.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/icon.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/button.css">
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/transition.css">
+
+  <!--- Example Libs -->
+  <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/components/popup.css">
+  <script src="http://semantic-ui.com/assets/library/jquery.min.js"></script>
+  <script src="http://semantic-ui.com/assets/library/iframe-content.js"></script>
+  <script src="http://semantic-ui.com/assets/show-examples.js"></script>
+  <script type="text/javascript" src="http://semantic-ui.com/dist/components/popup.js"></script>
+
+  <!--- Component JS -->
+  <script type="text/javascript" src="http://semantic-ui.com/dist/components/transition.js"></script>
+  <script type="text/javascript" src="http://semantic-ui.com/dist/components/dropdown.js"></script>
+</head>
+<body>
+<div class="ui menu">
+  <div class="header item">ZERO</div>
+  <a class="active item" href="{{ url_for('upload') }}">上传资源</a>
+  <a class="item">七天取牛</a>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui action left icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search">
+        <button class="ui button">Submit</button>
+      </div>
+    </div>
+    <a href="{{ url_for('index') }}" class="item">首页</a>
+  </div>
+</div>
+
+<div class="ui one column stackable center aligned page grid">
+<div class="column twelve wide">
+    <div class="ui header">
+        <h2 class="ui header">资源上传->七牛</h2>
+    <form class="ui form" method="post" enctype=multipart/form-data>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        <label>文件名(ex: banner.png)</label>
+        <!--input type="text" name="first-name" placeholder="First Name"-->
+        {{ form.filename(type="text", placeholder="Filename", rows="2") }}
+      </div>
+      <div class="field">
+        <label>URL(ex: 文件指向链接)</label>
+        <!--input type="text" name="last-name" placeholder="Last Name"-->
+        {{ form.url(type="text", placeholder="Url", rows="2") }}
+      </div>
+      <div class="field">
+        <input type=file name=file>
+        上传文件(允许上传png、jpg、jpeg、gif)文件
+      </div>
+      <!--button class="ui button" type="submit">Submit</button-->
+      {{ form.submit(class="ui button", type="submit") }}
+    </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
