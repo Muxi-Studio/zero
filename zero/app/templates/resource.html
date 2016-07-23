@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}ZERO{% endblock %}
+{% block js %}
+<script>
+    $('.ui green doubling four special cards.image').dimmer({
+      on: 'hover'
+    });
+</script>
+{% endblock %}
+{% block body %}
+<!--div class="ui four column relaxed grid"-->
+  <!--div class='column'-->
+    <div class="ui doubling five special cards">
+    {% for banner in banner_json %}
+    <div class="card">
+      <div class="dimmable image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+                <div class="ui inverted button">复制外链</div>
+            </div>
+          </div>
+        </div>
+        <img src={{ banner.get('img') }} />
+          </div>
+      <div class="content">
+        <a class="header">{{ banner.get('filename') }}</a>
+        <div class="meta">
+            <span class="date">Create in {{ banner.get('update') }}</span>
+        </div>
+      </div>
+      <div class="extra content">
+        <a href={{ banner.get('url') }} target='_blank'>
+          <i class="users icon"></i>
+          banner链接
+        </a>
+      </div>
+      <button class="ui inverted orange button">删除资源</button>
+    </div>
+    {% endfor %}
+    </div>
+  <!--/div-->
+<!--/div-->
+{% endblock %}

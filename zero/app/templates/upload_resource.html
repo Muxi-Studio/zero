@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}ZERO::Upload{% endblock %}
+{% block body %}
+<div class="ui one column stackable center aligned page grid">
+<div class="column twelve wide">
+    <h2 class="ui teal image header">
+      <img src="../static/img/lamu2.png" class="image">
+      <div class="content">
+          {{ name }}上传->七牛
+      </div>
+    </h2>
+    <form class="ui form" method="post" enctype=multipart/form-data>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        <label>文件名(ex: banner.png)</label>
+        <!--input type="text" name="first-name" placeholder="First Name"-->
+        {{ form.filename(type="text", placeholder="Filename", rows="2") }}
+      </div>
+      <div class="field">
+        <label>URL(ex: 文件指向链接)</label>
+        <!--input type="text" name="last-name" placeholder="Last Name"-->
+        {{ form.url(type="text", placeholder="Url", rows="2") }}
+      </div>
+      <div class="field">
+        <input type=file name=file>
+        {{ form.submit(class="ui button", type="submit") }}
+      </div>
+      <!--button class="ui button" type="submit">Submit</button-->
+    </form>
+    </div>
+</div>
+</div>
+{% endblock %}
