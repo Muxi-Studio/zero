@@ -21,7 +21,7 @@ app.config['QINIU_BUCKET_DOMAIN'] = 'oao7x1n3m.bkt.clouddn.com'
 
 
 qiniu = Qiniu(app)
-rds = redis.StrictRedis(host='localhost', port=6380, db=0)
+rds = redis.StrictRedis(host='localhost', port=6384, db=0)
 
 
 from . import views, forms
