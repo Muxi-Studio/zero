@@ -7,5 +7,5 @@
 }
 ```
 
-+ web端网址: 
++ web端网址: http://zero.muxixyz.com
 + 登录凭证: 木犀七牛账号::参见muxidoc
