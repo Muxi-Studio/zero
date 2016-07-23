@@ -35,7 +35,9 @@
           banner链接
         </a>
       </div>
-      <button class="ui inverted orange button">删除资源</button>
+      <form class="ui form" method="post" action={{ url_for('delete', filename=banner.get('filename')) }}>
+        <button class="ui inverted orange button">删除资源</button>
+      </form>
     </div>
     {% endfor %}
     </div>

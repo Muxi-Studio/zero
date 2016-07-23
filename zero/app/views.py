@@ -1,4 +1,6 @@
 # coding: utf-8
+
+import base64
 import requests
 from . import app, qiniu, rds
 from flask import render_template, session, redirect, g, url_for, request
@@ -94,6 +96,12 @@ def upload():
         return redirect(url_for('login'))
 
 
+def get_suffix(fileobj):
+    fb64 = base64.b64encode(fileobj.read())
+    fileobj.close()
+    return fb64
+
+
 @app.route('/banner_upload/', methods=['POST', 'GET'])
 def banner_upload():
     if session.get('login'):
@@ -103,7 +111,7 @@ def banner_upload():
             if file and allowed_file(file.filename, form.filename.data):
                 # 七牛文件上传
                 url = form.url.data
-                filename = form.filename.data
+                filename = form.filename.data # + get_suffix(file)
                 qiniu.save(file, filename)
                 if not rds.get('banners'):
                     rds.set('banners', [])
@@ -142,16 +150,22 @@ def calendar_upload():
         return redirect(url_for('login'))
 
 
-@app.route('/delete/')
+@app.route('/delete/', methods=['POST'])
 def delete():
     if session.get('login'):
         # from request args get filename
         filename = request.args.get('filename')
         qiniu.delete(filename)
         banners = eval(rds.get('banners')) 
+        calendars = eval(rds.get('calendars'))
         for i, banner in enumerate(banners):
             if banner.keys()[0] == filename:
                 del banners[i]
+                return redirect(url_for('banner'))
+        for j, calendar in enumerate('calendars'):
+            if calendar.keys()[0] == filename:
+                del calendars[i]
+                return redirect(url_for('calendar'))
         return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
