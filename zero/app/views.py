@@ -79,8 +79,8 @@ def calendar():
 
 def allowed_file(filename, upload_filename):
     filename_list = []
-    file_list = eval(rds.get('banners')) or [] + \
-                eval(rds.get('calendar')) or []
+    file_list = eval(rds.get('banners') or '[]') + \
+                eval(rds.get('calendar') or '[]')
     for file_dict in file_list:
         filename_list += file_dict.keys()
     return '.' in filename and \
