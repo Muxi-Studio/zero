@@ -16,8 +16,8 @@ app.config['QINIU_EMAIL'] = os.getenv('QINIU_EMAIL')
 app.config['QINIU_PASS'] = os.getenv('QINIU_PASS')
 app.config['QINIU_ACCESS_KEY'] = os.getenv('QINIU_ACCESS_KEY')
 app.config['QINIU_SECRET_KEY'] = os.getenv('QINIU_SECRET_KEY')
-app.config['QINIU_BUCKET_NAME'] = 'ccnustatic'
-app.config['QINIU_BUCKET_DOMAIN'] = 'oao7x1n3m.bkt.clouddn.com'
+app.config['QINIU_BUCKET_NAME'] = os.getenv('QINIU_BUCKET_NAME')
+app.config['QINIU_BUCKET_DOMAIN'] = os.getenv('QINIU_BUCKET_DOMAIN')
 
 
 qiniu = Qiniu(app)

@@ -13,7 +13,7 @@
 
 import sys
 from app import app
-from flask.ext.script import Manager, Shell
+from flask_script import Manager, Shell
 
 """编码设置"""
 reload(sys)
