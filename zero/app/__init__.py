@@ -9,8 +9,8 @@ from flask_qiniustorage import Qiniu
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key is here'
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif'])
-app.config['BANNER_API'] = 'http://123.56.41.13:5000/api/banner/'
-app.config['CALENDAR_API'] = 'http://123.56.41.13:5000/api/calendar/'
+app.config['BANNER_API'] = 'https://ccnubox.muxixyz.com/api/banner/'
+app.config['CALENDAR_API'] = 'https://ccnubox.muxixyz.com/api/calendar/'
 # qiniu config
 app.config['QINIU_EMAIL'] = os.getenv('QINIU_EMAIL')
 app.config['QINIU_PASS'] = os.getenv('QINIU_PASS')
